@@ -3,10 +3,7 @@ export type borderStyle = "solid" | "dashed" | "dotted" | "";
 export type objectType = {
   fSize: string;
   borderW: string;
-  borderRadiusLeft: string;
-  borderRadiusRight: string;
-  borderRadiusTop: string;
-  borderRadiusBottom: string;
+  borderRadius: string;
   borderStyle: borderStyle;
   paddingInline: string;
   paddingBlock: string;
@@ -14,3 +11,5 @@ export type objectType = {
   textClr: string;
   cursor: boolean;
 };
+
+export type activePage = "content" | "colors" | "border" | "shadow";
