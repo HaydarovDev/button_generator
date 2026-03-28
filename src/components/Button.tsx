@@ -70,232 +70,233 @@ export default function Button() {
 
   return (
     <section
-      className="flex items-center
-    flex-col"
+      className="w-full flex items-center justify-center
+    "
     >
-      <header className="flex w-75 justify-between my-2">
-        <button
-          onClick={() => setActive("content")}
-          className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "content" ? "border-red-700" : "border-white"}`}
-        >
-          content
-        </button>
-        <button
-          onClick={() => setActive("border")}
-          className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "border" ? "border-red-700" : "border-white"}`}
-        >
-          border
-        </button>
-        <button
-          onClick={() => setActive("colors")}
-          className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "colors" ? "border-red-700" : "border-white"}`}
-        >
-          colors
-        </button>
-        <button
-          onClick={() => setActive("shadow")}
-          className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "shadow" ? "border-red-700" : "border-white"}`}
-        >
-          shadow
-        </button>
-      </header>
+      <div className="flex items-center flex-col">
+        <header className="flex w-75 justify-between my-2">
+          <button
+            onClick={() => setActive("content")}
+            className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "content" ? "border-red-700" : "border-white"}`}
+          >
+            content
+          </button>
+          <button
+            onClick={() => setActive("border")}
+            className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "border" ? "border-red-700" : "border-white"}`}
+          >
+            border
+          </button>
+          <button
+            onClick={() => setActive("colors")}
+            className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "colors" ? "border-red-700" : "border-white"}`}
+          >
+            colors
+          </button>
+          <button
+            onClick={() => setActive("shadow")}
+            className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "shadow" ? "border-red-700" : "border-white"}`}
+          >
+            shadow
+          </button>
+        </header>
 
-      <article className="w-75 m-auto text-white flex flex-col gap-2">
-        {active === "content" ? (
-          <>
-            <p>Font size</p>
-            <input
-              type="range"
-              min={8}
-              max={30}
-              defaultValue={15}
-              step={2}
-              onChange={(size) =>
-                setValues({ ...values, fSize: size.target.value })
-              }
-            />
-            <p>Padding (vertical and horizontal)</p>
-            <input
-              type="range"
-              min={0}
-              max={30}
-              defaultValue={15}
-              onChange={(inline) =>
-                setValues({ ...values, paddingInline: inline.target.value })
-              }
-            />
-            <input
-              type="range"
-              min={0}
-              max={30}
-              defaultValue={8}
-              onChange={(block) =>
-                setValues({ ...values, paddingBlock: block.target.value })
-              }
-            />
-            <label
-              htmlFor="pointer"
-              className="flex items-center justify-center"
-            >
-              Pointer
+        <article className="w-75 m-auto text-white flex flex-col gap-2">
+          {active === "content" ? (
+            <>
+              <p>Font size</p>
               <input
-                type="checkbox"
-                id="pointer"
-                onChange={(cursor) =>
-                  setValues({ ...values, cursor: cursor.target.checked })
+                type="range"
+                min={8}
+                max={30}
+                defaultValue={15}
+                step={2}
+                onChange={(size) =>
+                  setValues({ ...values, fSize: size.target.value })
                 }
               />
-            </label>
-          </>
-        ) : (
-          ""
-        )}
+              <p>Padding (vertical and horizontal)</p>
+              <input
+                type="range"
+                min={0}
+                max={30}
+                defaultValue={15}
+                onChange={(inline) =>
+                  setValues({ ...values, paddingInline: inline.target.value })
+                }
+              />
+              <input
+                type="range"
+                min={0}
+                max={30}
+                defaultValue={8}
+                onChange={(block) =>
+                  setValues({ ...values, paddingBlock: block.target.value })
+                }
+              />
+              <label
+                htmlFor="pointer"
+                className="flex items-center justify-center"
+              >
+                Pointer
+                <input
+                  type="checkbox"
+                  id="pointer"
+                  onChange={(cursor) =>
+                    setValues({ ...values, cursor: cursor.target.checked })
+                  }
+                />
+              </label>
+            </>
+          ) : (
+            ""
+          )}
 
-        {active === "border" ? (
-          <>
-            <p>Border</p>
-            <input
-              type="range"
-              min={1}
-              max={10}
-              defaultValue={0}
-              onChange={(size) =>
-                setValues({ ...values, borderW: size.target.value })
-              }
-            />
-            <input
-              type="range"
-              defaultValue={10}
-              min={0}
-              max={15}
-              onChange={(size) =>
-                setValues({ ...values, borderRadius: size.target.value })
-              }
-            />
-            <select
-              className="border"
-              defaultValue={"none"}
-              onChange={(style) =>
-                setValues({
-                  ...values,
-                  borderStyle: style.target.value as borderStyle,
-                })
-              }
-            >
-              <option className="text-black" value="solid">
-                Solid
-              </option>
-              <option className="text-black" value="dotted">
-                Dotted
-              </option>
-              <option className="text-black" value="dashed">
-                Dashed
-              </option>
-              <option className="text-black" value="none">
-                none
-              </option>
-            </select>
-            <p>border color</p>
-            <input
-              type="color"
-              defaultValue={"#fff"}
-              onChange={(borderClr) =>
-                setValues({ ...values, borderColor: borderClr.target.value })
-              }
-            />
-          </>
-        ) : (
-          ""
-        )}
+          {active === "border" ? (
+            <>
+              <p>Border</p>
+              <input
+                type="range"
+                min={1}
+                max={10}
+                defaultValue={0}
+                onChange={(size) =>
+                  setValues({ ...values, borderW: size.target.value })
+                }
+              />
+              <input
+                type="range"
+                defaultValue={10}
+                min={0}
+                max={15}
+                onChange={(size) =>
+                  setValues({ ...values, borderRadius: size.target.value })
+                }
+              />
+              <select
+                className="border"
+                defaultValue={"none"}
+                onChange={(style) =>
+                  setValues({
+                    ...values,
+                    borderStyle: style.target.value as borderStyle,
+                  })
+                }
+              >
+                <option className="text-black" value="solid">
+                  Solid
+                </option>
+                <option className="text-black" value="dotted">
+                  Dotted
+                </option>
+                <option className="text-black" value="dashed">
+                  Dashed
+                </option>
+                <option className="text-black" value="none">
+                  none
+                </option>
+              </select>
+              <p>border color</p>
+              <input
+                type="color"
+                defaultValue={"#fff"}
+                onChange={(borderClr) =>
+                  setValues({ ...values, borderColor: borderClr.target.value })
+                }
+              />
+            </>
+          ) : (
+            ""
+          )}
 
-        {active === "colors" ? (
-          <>
-            <p>text color</p>
-            <input
-              type="color"
-              defaultValue={"#fff"}
-              onChange={(textClr) =>
-                setValues({ ...values, textClr: textClr.target.value })
-              }
-            />
-            <input
-              type="color"
-              defaultValue={"#4f46e5"}
-              onChange={(bg) =>
-                setValues({ ...values, bgClr: bg.target.value })
-              }
-            />
-          </>
-        ) : (
-          ""
-        )}
+          {active === "colors" ? (
+            <>
+              <p>text color</p>
+              <input
+                type="color"
+                defaultValue={"#fff"}
+                onChange={(textClr) =>
+                  setValues({ ...values, textClr: textClr.target.value })
+                }
+              />
+              <input
+                type="color"
+                defaultValue={"#4f46e5"}
+                onChange={(bg) =>
+                  setValues({ ...values, bgClr: bg.target.value })
+                }
+              />
+            </>
+          ) : (
+            ""
+          )}
 
-        {active === "shadow" ? (
-          <>
-            <p>Offset X</p>
-            <input
-              type="range"
-              min={-30}
-              max={30}
-              defaultValue={0}
-              onChange={(offsetX) =>
-                setValues({ ...values, offsetX: offsetX.target.value })
-              }
-            />
-            <p>Offset Y</p>
-            <input
-              type="range"
-              min={-30}
-              max={30}
-              defaultValue={4}
-              onChange={(offsetY) =>
-                setValues({ ...values, offsetY: offsetY.target.value })
-              }
-            />
-            <p>Blur Radius</p>
-            <input
-              type="range"
-              min={0}
-              max={1}
-              step={0.1}
-              defaultValue={0.4}
-              onChange={(shadowOpac) =>
-                setValues({ ...values, shadowOpac: shadowOpac.target.value })
-              }
-            />
-            <p>Shadow Opacity</p>
-            <input
-              type="range"
-              defaultValue={14}
-              onChange={(shadowBlur) =>
-                setValues({ ...values, shadowBlur: shadowBlur.target.value })
-              }
-            />
-            <p>Shadow color</p>
-            <input
-              type="color"
-              defaultValue={"rgba(79,70,229,0.4)"}
-              onChange={(shadowClr) =>
-                setValues({ ...values, shadowClr: shadowClr.target.value })
-              }
-            />
-          </>
-        ) : (
-          ""
-        )}
-      </article>
-
-      <article className="border rounded w-full overflow-x-scroll p-2 m-2 relative sm:w-150 sm:overflow-auto">
-        <button
-          className="border rounded py-1 px-3 border-white text-white absolute right-2"
-          onClick={() => handleCopy()}
-        >
-          Copy
-        </button>
-        <pre className="text-white" ref={code}>
-          {styles}
-        </pre>
-      </article>
+          {active === "shadow" ? (
+            <>
+              <p>Offset X</p>
+              <input
+                type="range"
+                min={-30}
+                max={30}
+                defaultValue={0}
+                onChange={(offsetX) =>
+                  setValues({ ...values, offsetX: offsetX.target.value })
+                }
+              />
+              <p>Offset Y</p>
+              <input
+                type="range"
+                min={-30}
+                max={30}
+                defaultValue={4}
+                onChange={(offsetY) =>
+                  setValues({ ...values, offsetY: offsetY.target.value })
+                }
+              />
+              <p>Blur Radius</p>
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={0.1}
+                defaultValue={0.4}
+                onChange={(shadowOpac) =>
+                  setValues({ ...values, shadowOpac: shadowOpac.target.value })
+                }
+              />
+              <p>Shadow Opacity</p>
+              <input
+                type="range"
+                defaultValue={14}
+                onChange={(shadowBlur) =>
+                  setValues({ ...values, shadowBlur: shadowBlur.target.value })
+                }
+              />
+              <p>Shadow color</p>
+              <input
+                type="color"
+                defaultValue={"rgba(79,70,229,0.4)"}
+                onChange={(shadowClr) =>
+                  setValues({ ...values, shadowClr: shadowClr.target.value })
+                }
+              />
+            </>
+          ) : (
+            ""
+          )}
+        </article>
+        <article className="border rounded w-full overflow-x-scroll p-2 m-2 relative sm:w-150 sm:overflow-auto">
+          <button
+            className="border rounded py-1 px-3 border-white text-white absolute right-2"
+            onClick={() => handleCopy()}
+          >
+            Copy
+          </button>
+          <pre className="text-white" ref={code}>
+            {styles}
+          </pre>
+        </article>
+      </div>
 
       <button
         style={{
