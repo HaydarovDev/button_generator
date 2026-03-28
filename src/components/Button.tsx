@@ -58,6 +58,14 @@ export default function Button() {
   border-radius: ${borderRadius || 10}px;
   box-shadow: ${offsetY || 0}px ${offsetX || 4}px ${shadowBlur || 14}px rgba(${shadowClr || "79,70,229"},${shadowOpac || "0.5"});
   cursor: ${cursor ? "pointer" : "default"};
+}
+.modern-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: ${offsetY || 0}px ${offsetX || 4}px ${shadowBlur || 14}px rgba(${shadowClr || "79,70,229"},${shadowOpac || "0.5"});
+}
+
+.modern-btn:active {
+  transform: translateY(0);
 }`;
 
   return (
@@ -277,7 +285,7 @@ export default function Button() {
         )}
       </article>
 
-      <article className="border rounded w-150 p-2 m-2 relative">
+      <article className="border rounded w-full overflow-x-scroll p-2 m-2 relative sm:w-150 sm:overflow-auto">
         <button
           className="border rounded py-1 px-3 border-white text-white absolute right-2"
           onClick={() => handleCopy()}
