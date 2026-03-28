@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { activePage, borderStyle, objectType } from "../types/type";
 
 export default function Button() {
-  const [active, setActive] = useState<activePage>("content");
+  const [active, setActive] = useState<activePage>("colors");
+  const code = useRef<HTMLPreElement>(null);
 
   const [values, setValues] = useState<objectType>({
     fSize: "",
@@ -13,10 +14,33 @@ export default function Button() {
     paddingBlock: "",
     borderColor: "",
     textClr: "",
+    bgClr: "",
     cursor: false,
+    offsetX: "",
+    offsetY: "",
+    shadowBlur: "",
+    shadowClr: "",
+    shadowOpac: "",
   });
 
-  console.log(active);
+  const handleCopy = () => {
+    if (code.current) {
+      navigator.clipboard.writeText(code.current.textContent || "");
+    }
+  };
+
+  const styles = `.modern-btn {
+  display: inline-block;
+  padding: ${values.paddingBlock || 8}px ${values.paddingInline || 15}px;
+  font-size: ${values.fSize || 16}px;
+  font-weight: 600;
+  color: ${values.textClr || "#ffffff"};
+  background: ${values.bgClr || "#4f46e5"};
+  border: ${values.borderW || 0}px ${values.borderStyle || "none"} ${values.borderColor || "transparent"};
+  border-radius: ${values.borderRadius || 10}px;
+  box-shadow: ${values.offsetY || 0}px ${values.offsetX || 4}px ${values.shadowBlur || 14}px rgba(${values.shadowClr || "79,70,229"},${values.shadowOpac || "0.5"});
+  cursor: ${values.cursor ? "pointer" : "default"};
+}`;
 
   return (
     <section
@@ -26,25 +50,25 @@ export default function Button() {
       <header className="flex w-75 justify-between my-2">
         <button
           onClick={() => setActive("content")}
-          className="p-1 m-1 border border-white text-white cursor-pointer rounded"
+          className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "content" ? "border-red-700" : "border-white"}`}
         >
           content
         </button>
         <button
           onClick={() => setActive("border")}
-          className="p-1 m-1 border border-white text-white cursor-pointer rounded"
+          className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "border" ? "border-red-700" : "border-white"}`}
         >
           border
         </button>
         <button
           onClick={() => setActive("colors")}
-          className="p-1 m-1 border border-white text-white cursor-pointer rounded"
+          className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "colors" ? "border-red-700" : "border-white"}`}
         >
           colors
         </button>
         <button
           onClick={() => setActive("shadow")}
-          className="p-1 m-1 border border-white text-white cursor-pointer rounded"
+          className={`p-1 m-1 border text-white cursor-pointer rounded ${active == "shadow" ? "border-red-700" : "border-white"}`}
         >
           shadow
         </button>
@@ -53,7 +77,7 @@ export default function Button() {
       <article className="w-75 m-auto text-white flex flex-col gap-2">
         {active === "content" ? (
           <>
-            <p>Content</p>
+            <p>Font size</p>
             <input
               type="range"
               min={8}
@@ -68,8 +92,8 @@ export default function Button() {
             <input
               type="range"
               min={0}
-              max={15}
-              defaultValue={4}
+              max={30}
+              defaultValue={15}
               onChange={(inline) =>
                 setValues({ ...values, paddingInline: inline.target.value })
               }
@@ -77,8 +101,8 @@ export default function Button() {
             <input
               type="range"
               min={0}
-              max={15}
-              defaultValue={4}
+              max={30}
+              defaultValue={8}
               onChange={(block) =>
                 setValues({ ...values, paddingBlock: block.target.value })
               }
@@ -108,14 +132,14 @@ export default function Button() {
               type="range"
               min={1}
               max={10}
-              defaultValue={3}
+              defaultValue={0}
               onChange={(size) =>
                 setValues({ ...values, borderW: size.target.value })
               }
             />
             <input
               type="range"
-              defaultValue={3}
+              defaultValue={10}
               min={0}
               max={15}
               onChange={(size) =>
@@ -124,6 +148,7 @@ export default function Button() {
             />
             <select
               className="border"
+              defaultValue={"none"}
               onChange={(style) =>
                 setValues({
                   ...values,
@@ -167,6 +192,13 @@ export default function Button() {
                 setValues({ ...values, textClr: textClr.target.value })
               }
             />
+            <input
+              type="color"
+              defaultValue={"#4f46e5"}
+              onChange={(bg) =>
+                setValues({ ...values, bgClr: bg.target.value })
+              }
+            />
           </>
         ) : (
           ""
@@ -174,44 +206,51 @@ export default function Button() {
 
         {active === "shadow" ? (
           <>
-            <p>Shadow color</p>
+            <p>Offset X</p>
             <input
               type="range"
-              defaultValue={"#fff"}
-              onChange={(textClr) =>
-                setValues({ ...values, textClr: textClr.target.value })
+              min={-30}
+              max={30}
+              defaultValue={0}
+              onChange={(offsetX) =>
+                setValues({ ...values, offsetX: offsetX.target.value })
               }
             />
-            <p>Shadow color</p>
+            <p>Offset Y</p>
             <input
               type="range"
-              defaultValue={"#fff"}
-              onChange={(textClr) =>
-                setValues({ ...values, textClr: textClr.target.value })
+              min={-30}
+              max={30}
+              defaultValue={4}
+              onChange={(offsetY) =>
+                setValues({ ...values, offsetY: offsetY.target.value })
               }
             />
-            <p>Shadow color</p>
+            <p>Blur Radius</p>
             <input
               type="range"
-              defaultValue={"#fff"}
-              onChange={(textClr) =>
-                setValues({ ...values, textClr: textClr.target.value })
+              min={0}
+              max={1}
+              step={0.1}
+              defaultValue={0.4}
+              onChange={(shadowOpac) =>
+                setValues({ ...values, shadowOpac: shadowOpac.target.value })
               }
             />
-            <p>Shadow color</p>
+            <p>Shadow Opacity</p>
             <input
               type="range"
-              defaultValue={"#fff"}
-              onChange={(textClr) =>
-                setValues({ ...values, textClr: textClr.target.value })
+              defaultValue={14}
+              onChange={(shadowBlur) =>
+                setValues({ ...values, shadowBlur: shadowBlur.target.value })
               }
             />
             <p>Shadow color</p>
             <input
               type="color"
-              defaultValue={"#fff"}
-              onChange={(textClr) =>
-                setValues({ ...values, textClr: textClr.target.value })
+              defaultValue={"rgba(79,70,229,0.4)"}
+              onChange={(shadowClr) =>
+                setValues({ ...values, shadowClr: shadowClr.target.value })
               }
             />
           </>
@@ -220,15 +259,29 @@ export default function Button() {
         )}
       </article>
 
+      <article className="border rounded p-2 m-2 relative">
+        <button
+          className="border rounded py-1 px-3 border-white text-white absolute right-2"
+          onClick={() => handleCopy()}
+        >
+          Copy
+        </button>
+        <pre className="text-white" ref={code}>
+          {styles}
+        </pre>
+      </article>
+
       <button
         style={{
           fontSize: `${values.fSize || 15}px`,
-          border: `${values.borderW || 1}px ${values.borderStyle || "solid"} ${values.borderColor || "white"}`,
-          borderRadius: `${values.borderRadius || 3}px`,
-          paddingBlock: `${values.paddingBlock || 4}px`,
-          paddingInline: `${values.paddingInline || 4}px`,
+          border: `${values.borderW}px ${values.borderStyle || "solid"} ${values.borderColor || "white"}`,
+          borderRadius: `${values.borderRadius || 10}px`,
+          paddingBlock: `${values.paddingBlock || 8}px`,
+          paddingInline: `${values.paddingInline || 15}px`,
           color: `${values.textClr || "white"}`,
           cursor: `${values.cursor ? "pointer" : "default"}`,
+          boxShadow: `${values.offsetX || 0}px ${values.offsetY || 4}px ${values.shadowBlur || 14}px rgba(${values.shadowClr || "79,70,229"},${values.shadowOpac || "0.5"})`,
+          background: `${values.bgClr || "#4f46e5"}`,
         }}
       >
         Hello button

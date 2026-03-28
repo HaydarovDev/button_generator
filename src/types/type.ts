@@ -9,7 +9,13 @@ export type objectType = {
   paddingBlock: string;
   borderColor: string;
   textClr: string;
+  bgClr: string;
   cursor: boolean;
+  offsetX: string;
+  offsetY: string;
+  shadowBlur: string;
+  shadowClr: string;
+  shadowOpac: string;
 };
 
 export type activePage = "content" | "colors" | "border" | "shadow";
