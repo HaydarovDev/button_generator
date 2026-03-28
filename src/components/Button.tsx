@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import type { activePage, borderStyle, objectType } from "../types/type";
 
 export default function Button() {
-  const [active, setActive] = useState<activePage>("colors");
+  const [active, setActive] = useState<activePage>("content");
   const code = useRef<HTMLPreElement>(null);
 
   const [values, setValues] = useState<objectType>({
@@ -259,7 +259,7 @@ export default function Button() {
         )}
       </article>
 
-      <article className="border rounded p-2 m-2 relative">
+      <article className="border rounded w-150 p-2 m-2 relative">
         <button
           className="border rounded py-1 px-3 border-white text-white absolute right-2"
           onClick={() => handleCopy()}
