@@ -29,17 +29,35 @@ export default function Button() {
     }
   };
 
+  const {
+    paddingBlock,
+    paddingInline,
+    fSize,
+    textClr,
+    bgClr,
+    borderW,
+    borderStyle,
+    borderColor,
+    borderRadius,
+    offsetY,
+    offsetX,
+    shadowBlur,
+    shadowClr,
+    shadowOpac,
+    cursor,
+  } = values;
+
   const styles = `.modern-btn {
   display: inline-block;
-  padding: ${values.paddingBlock || 8}px ${values.paddingInline || 15}px;
-  font-size: ${values.fSize || 16}px;
+  padding: ${paddingBlock || 8}px ${paddingInline || 15}px;
+  font-size: ${fSize || 16}px;
   font-weight: 600;
-  color: ${values.textClr || "#ffffff"};
-  background: ${values.bgClr || "#4f46e5"};
-  border: ${values.borderW || 0}px ${values.borderStyle || "none"} ${values.borderColor || "transparent"};
-  border-radius: ${values.borderRadius || 10}px;
-  box-shadow: ${values.offsetY || 0}px ${values.offsetX || 4}px ${values.shadowBlur || 14}px rgba(${values.shadowClr || "79,70,229"},${values.shadowOpac || "0.5"});
-  cursor: ${values.cursor ? "pointer" : "default"};
+  color: ${textClr || "#ffffff"};
+  background: ${bgClr || "#4f46e5"};
+  border: ${borderW || 0}px ${borderStyle || "none"} ${borderColor || "transparent"};
+  border-radius: ${borderRadius || 10}px;
+  box-shadow: ${offsetY || 0}px ${offsetX || 4}px ${shadowBlur || 14}px rgba(${shadowClr || "79,70,229"},${shadowOpac || "0.5"});
+  cursor: ${cursor ? "pointer" : "default"};
 }`;
 
   return (
