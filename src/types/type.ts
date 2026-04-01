@@ -1,21 +1,6 @@
-export type borderStyle = "solid" | "dashed" | "dotted" | "";
+import type { border, Content, shadowBtn } from "./button";
 
-export type objectType = {
-  fSize: string;
-  borderW: string;
-  borderRadius: string;
-  borderStyle: borderStyle;
-  paddingInline: string;
-  paddingBlock: string;
-  borderColor: string;
-  textClr: string;
-  bgClr: string;
-  cursor: boolean;
-  offsetX: string;
-  offsetY: string;
-  shadowBlur: string;
-  shadowClr: string;
-  shadowOpac: string;
+export type ContentProps = {
+  values: border & shadowBtn & Content;
+  setValues: React.Dispatch<React.SetStateAction<border & shadowBtn & Content>>;
 };
-
-export type activePage = "content" | "colors" | "border" | "shadow";
