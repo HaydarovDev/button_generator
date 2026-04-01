@@ -26,4 +26,5 @@ export type border = {
   borderColor: string;
 };
 
-export type inputType = { type: string; min?: string };
+
+export type Styles = border & shadowBtn & Content;

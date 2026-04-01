@@ -1,7 +1,7 @@
-import type { ContentProps } from "../types/type";
+import type { ContentProps } from "../types/props";
 import Input from "./Input";
 
-export default function Colors({ values, setValues }: ContentProps) {
+export default function Colors({ styles, setStyles }: ContentProps) {
   return (
     <>
       <p>text color</p>
@@ -9,14 +9,14 @@ export default function Colors({ values, setValues }: ContentProps) {
         type="color"
         defaultValue="#fff"
         onChange={(textClr) =>
-          setValues({ ...values, textClr: textClr.target.value })
+          setStyles({ ...styles, textClr: textClr.target.value })
         }
       />
       <Input
         type="color"
         defaultValue={"#fff"}
         onChange={(bg) =>
-          setValues({ ...values, backgroundColor: bg.target.value })
+          setStyles({ ...styles, backgroundColor: bg.target.value })
         }
       />
     </>

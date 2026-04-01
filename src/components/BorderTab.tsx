@@ -1,9 +1,9 @@
 import type { BorderStyle } from "../types/button";
-import type { ContentProps } from "../types/type";
+import type { ContentProps } from "../types/props";
 import Input from "./Input";
 import Select from "./Select";
 
-export default function BorderTab({ values, setValues }: ContentProps) {
+export default function BorderTab({ styles, setStyles }: ContentProps) {
   return (
     <>
       <p>Border</p>
@@ -13,7 +13,7 @@ export default function BorderTab({ values, setValues }: ContentProps) {
         max={10}
         defaultValue={0}
         onChange={(size) =>
-          setValues({ ...values, borderW: Number(size.target.value) })
+          setStyles({ ...styles, borderW: Number(size.target.value) })
         }
       />
       <Input
@@ -22,8 +22,8 @@ export default function BorderTab({ values, setValues }: ContentProps) {
         max={15}
         // defaultValue={10}
         onChange={(size) =>
-          setValues({
-            ...values,
+          setStyles({
+            ...styles,
             borderRadius: Number(size.target.value),
           })
         }
@@ -32,8 +32,8 @@ export default function BorderTab({ values, setValues }: ContentProps) {
         className="border"
         defaultValue="solid"
         onChange={(e) =>
-          setValues({
-            ...values,
+          setStyles({
+            ...styles,
             borderStyle: e.target.value as BorderStyle,
           })
         }
@@ -43,7 +43,7 @@ export default function BorderTab({ values, setValues }: ContentProps) {
         type="color"
         defaultValue={"#fff"}
         onChange={(borderClr) =>
-          setValues({ ...values, borderColor: borderClr.target.value })
+          setStyles({ ...styles, borderColor: borderClr.target.value })
         }
       />
     </>

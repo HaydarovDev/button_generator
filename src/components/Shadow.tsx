@@ -1,7 +1,7 @@
 import Input from "./Input";
-import type { ContentProps } from "../types/type";
+import type { ContentProps } from "../types/props";
 
-export default function Shadow({ values, setValues }: ContentProps) {
+export default function Shadow({ styles, setStyles }: ContentProps) {
   return (
     <>
       <p>Offset X</p>
@@ -11,7 +11,7 @@ export default function Shadow({ values, setValues }: ContentProps) {
         max={30}
         defaultValue={0}
         onChange={(offsetX) =>
-          setValues({ ...values, x: Number(offsetX.target.value) })
+          setStyles({ ...styles, x: Number(offsetX.target.value) })
         }
       />
       <p>Offset Y</p>
@@ -21,7 +21,7 @@ export default function Shadow({ values, setValues }: ContentProps) {
         max={30}
         defaultValue={4}
         onChange={(offsetY) =>
-          setValues({ ...values, y: Number(offsetY.target.value) })
+          setStyles({ ...styles, y: Number(offsetY.target.value) })
         }
       />
       <p>Blur Radius</p>
@@ -32,7 +32,7 @@ export default function Shadow({ values, setValues }: ContentProps) {
         step={0.1}
         defaultValue={0.4}
         onChange={(shadowOpac) =>
-          setValues({ ...values, opacity: shadowOpac.target.value })
+          setStyles({ ...styles, opacity: shadowOpac.target.value })
         }
       />
       <p>Shadow Opacity</p>
@@ -40,8 +40,8 @@ export default function Shadow({ values, setValues }: ContentProps) {
         type="range"
         defaultValue={14}
         onChange={(shadowBlur) =>
-          setValues({
-            ...values,
+          setStyles({
+            ...styles,
             blur: Number(shadowBlur.target.value),
           })
         }
@@ -51,7 +51,7 @@ export default function Shadow({ values, setValues }: ContentProps) {
         type="color"
         defaultValue={"rgba(79,70,229,0.4)"}
         onChange={(shadowClr) =>
-          setValues({ ...values, background: shadowClr.target.value })
+          setStyles({ ...styles, background: shadowClr.target.value })
         }
       />
     </>

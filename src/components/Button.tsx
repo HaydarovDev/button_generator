@@ -1,6 +1,6 @@
-import type { border, Content, shadowBtn } from "../types/button";
+import type { Styles } from "../types/button";
 
-export default function Button(styles: border & shadowBtn & Content) {
+export default function Button(styles: Styles) {
   const {
     fSize,
     borderW,

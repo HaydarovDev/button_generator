@@ -1,17 +1,17 @@
 import { useState } from "react";
 import Button from "./components/Button";
-import type { border, Content, shadowBtn } from "./types/button";
 import type { tabMenu } from "./types/tab";
 import OutputCode from "./components/OutputCode";
 import ContentTab from "./components/ContentTab";
 import BorderTab from "./components/BorderTab";
 import Colors from "./components/Colors";
 import Shadow from "./components/Shadow";
+import type { Styles } from "./types/button";
 
 export default function App() {
   const [active, setActive] = useState<tabMenu>("content");
 
-  const [values, setValues] = useState<border & shadowBtn & Content>({
+  const [styles, setStyles] = useState<Styles>({
     fSize: 0,
     borderW: 0,
     borderRadius: 0,
@@ -64,33 +64,33 @@ export default function App() {
 
         <article className="w-75 m-auto text-white flex flex-col gap-2">
           {active === "content" ? (
-            <ContentTab values={values} setValues={setValues} />
+            <ContentTab styles={styles} setStyles={setStyles} />
           ) : (
             ""
           )}
 
           {active === "border" ? (
-            <BorderTab values={values} setValues={setValues} />
+            <BorderTab styles={styles} setStyles={setStyles} />
           ) : (
             ""
           )}
 
           {active === "colors" ? (
-            <Colors values={values} setValues={setValues} />
+            <Colors styles={styles} setStyles={setStyles} />
           ) : (
             ""
           )}
 
           {active === "shadow" ? (
-            <Shadow values={values} setValues={setValues} />
+            <Shadow styles={styles} setStyles={setStyles} />
           ) : (
             ""
           )}
         </article>
-        <OutputCode {...values} />
+        <OutputCode {...styles} />
       </div>
 
-      <Button {...values} />
+      <Button {...styles} />
     </section>
   );
 }

@@ -1,7 +1,7 @@
-import type { ContentProps } from "../types/type";
+import type { ContentProps } from "../types/props";
 import Input from "./Input";
 
-export default function ContentTab({ values, setValues }: ContentProps) {
+export default function ContentTab({ styles, setStyles }: ContentProps) {
   return (
     <>
       <p>Font size</p>
@@ -12,7 +12,7 @@ export default function ContentTab({ values, setValues }: ContentProps) {
         defaultValue={15}
         step={2}
         onChange={(size) =>
-          setValues({ ...values, fSize: Number(size.target.value) })
+          setStyles({ ...styles, fSize: Number(size.target.value) })
         }
       />
       <p>Padding (vertical and horizontal)</p>
@@ -23,8 +23,8 @@ export default function ContentTab({ values, setValues }: ContentProps) {
         max={30}
         defaultValue={15}
         onChange={(inline) =>
-          setValues({
-            ...values,
+          setStyles({
+            ...styles,
             paddingInline: Number(inline.target.value),
           })
         }
@@ -35,8 +35,8 @@ export default function ContentTab({ values, setValues }: ContentProps) {
         max={30}
         defaultValue={8}
         onChange={(block) =>
-          setValues({
-            ...values,
+          setStyles({
+            ...styles,
             paddingBlock: Number(block.target.value),
           })
         }
@@ -47,7 +47,7 @@ export default function ContentTab({ values, setValues }: ContentProps) {
           type="checkbox"
           id="pointer"
           onChange={(cursor) =>
-            setValues({ ...values, cursor: cursor.target.checked })
+            setStyles({ ...styles, cursor: cursor.target.checked })
           }
         />
       </label>
