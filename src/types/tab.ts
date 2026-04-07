@@ -1,1 +1,1 @@
-export type tabMenu = "content" | "colors" | "border" | "shadow";
+export type Tab = "content" | "colors" | "border" | "shadow";

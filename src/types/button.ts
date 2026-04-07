@@ -1,30 +1,36 @@
-export type styleType = string[];
+export type CSSValue = number | string;
 
-export type shadowBtn = {
-  x: number;
-  y: number;
-  blur: number;
-  background: string;
-  opacity: string;
-};
+export type Cursor =
+  | "pointer"
+  | "default"
+  | "not-allowed"
+  | "grab"
+  | "text";
 
 export type BorderStyle = "none" | "solid" | "dashed" | "dotted";
 
-export type Content = {
-  paddingInline: number;
-  paddingBlock: number;
-  textClr: string;
-  backgroundColor: string;
-  cursor: boolean;
-  fSize: number;
-};
-
-export type border = {
-  borderW: number;
-  borderRadius: number;
+export type Border = {
+  borderWidth: CSSValue;
+  borderRadius: CSSValue;
   borderStyle: BorderStyle;
   borderColor: string;
 };
 
+export type Shadow = {
+  shadowX: CSSValue;
+  shadowY: CSSValue;
+  shadowBlur: CSSValue;
+  shadowColor: string;
+  shadowOpacity: number;
+};
 
-export type Styles = border & shadowBtn & Content;
+export type Content = {
+  paddingInline: CSSValue;
+  paddingBlock: CSSValue;
+  textColor: string;
+  backgroundColor: string;
+  cursor: Cursor;
+  fontSize: CSSValue;
+};
+
+export type Styles = Border & Shadow & Content;
